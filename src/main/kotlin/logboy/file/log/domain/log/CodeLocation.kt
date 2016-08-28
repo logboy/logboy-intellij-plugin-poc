@@ -25,11 +25,6 @@ data class CodeClass(val className: String, val packageString: String? = null) {
     }
   }
 
-
-  init {
-
-  }
-
 }
 
 data class PreciseLineLocation(val line: Int, val col: Int? = null)

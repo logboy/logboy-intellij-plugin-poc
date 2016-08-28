@@ -1,33 +1,8 @@
-package com.logboy.file.log.parser
+package com.logboy.parser.java
 
-import com.logboy.file.log.domain.log.*
+import com.logboy.domain.*
 import com.logboy.util.emptyToNull
 import java.time.LocalDateTime
-
-
-private val simplestMatchers: List<(String) -> LogLine?> =
-    listOf(
-        JavaLog4JClassicLineParser()
-    )
-
-class SimplePatternLineParser(
-
-    val matchers: List<(String) -> LogLine?>
-
-) : LineParser {
-
-  override fun parse(rawLine: String): LogLine? {
-    var goodMatch: LogLine? = null
-    for (matcher in matchers)
-      goodMatch = goodMatch ?: matcher(rawLine)
-
-    return goodMatch
-  }
-
-}
-
-
-
 
 class JavaLog4JClassicLineParser : (String) -> LogLine? {
   override fun invoke(logLine: String): LogLine? {
@@ -47,8 +22,8 @@ class JavaLog4JClassicLineParser : (String) -> LogLine? {
 
       val level = Level.valueOf(groups[4].toUpperCase())
 
-      val preciseCodeLocation = groups.getOrNull(7).emptyToNull()?.toInt()?.let { PreciseLineLocation(it) }
-      val codeLocation = CodeLocation(null, CodeClass.fromFullyQualified(groups[5]), preciseCodeLocation)
+      val preciseCodeLocation = groups.getOrNull(7).emptyToNull()?.toInt()?.let { CodeLineLocation(it) }
+      val codeLocation = PreciseCodeLineLocation(null, ClassLocation.fromFullyQualified(groups[5]), preciseCodeLocation)
 
       LogLine(content, dateTime, level, codeLocation)
     }

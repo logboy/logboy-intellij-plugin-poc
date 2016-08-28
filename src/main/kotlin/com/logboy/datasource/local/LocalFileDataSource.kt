@@ -1,6 +1,7 @@
-package com.logboy.file.log.datasources
+package com.logboy.datasource.local
 
-import com.logboy.file.log.domain.log.LogInquiry
+import com.logboy.datasource.StaticDataSource
+import com.logboy.domain.LogInquiry
 import java.nio.file.Files
 import java.nio.file.Files.readAllBytes
 import java.nio.file.Files.readAllLines

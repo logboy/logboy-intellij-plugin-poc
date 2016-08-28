@@ -3,9 +3,10 @@ package com.logboy.psi
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
-import com.logboy.file.log.domain.log.CodeLocation
+import com.intellij.psi.PsiFile
+import com.logboy.domain.PreciseCodeLineLocation
 
-data class PsiLocSpec(val psiElement: PsiElement, val file: String?, val offset: Int?)
+data class PsiLocation(val psiFile: PsiFile, val psiOffset: Int? = null)
 
 data class IntellijLocalProjectContext(
     val vcsHash: String,
@@ -23,6 +24,6 @@ interface PsiLineLogLocator {
       localProjectContext: IntellijLocalProjectContext,
       logOriginContext: LogOriginContext,
 
-      codeLocation: CodeLocation
-  ): PsiLocSpec
+      codeLocation: PreciseCodeLineLocation
+  ): PsiLocation?
 }

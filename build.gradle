@@ -45,15 +45,22 @@ allprojects {
     tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
     repositories {
-
+        jcenter()
         mavenCentral()
         maven { url "http://repository.jetbrains.com/all" }
         maven { url "http://repo.maven.apache.org/maven2" }
+        maven {
+            url  "https://dl.bintray.com/myhau/kotlin-unwrap"
+        }
     }
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         compile "org.jetbrains.kotlin:kotlin-runtime:$kotlinVersion"
 
+        compile 'com.github.salomonbrys.kodein:kodein-conf:3.0.0'
+        compile 'com.github.salomonbrys.kodein:kodein:3.0.0'
+
+        compile 'com.myhau:kotlin-unwrap:0.3.0'
         compile group: 'io.reactivex', name: 'rxjava', version: '1.1.6'
         compile group: 'org.springframework', name: 'spring-core', version: '4.3.0.RELEASE'
         compile group: 'io.reactivex', name: 'rxkotlin', version: '0.60.0'
@@ -76,5 +83,8 @@ idea {
 
     module {
         excludeDirs += file('.sandbox')
+        downloadSources = true
+        downloadIdeaSources = true
+        downloadJavadoc = true
     }
 }

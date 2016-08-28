@@ -1,7 +1,8 @@
 package com.logboy.view.style
 
-import com.logboy.file.log.domain.log.Level
-import com.logboy.file.log.domain.log.LogLine
+import com.intellij.util.containers.HashMap
+import com.logboy.domain.Level
+import com.logboy.domain.LogLine
 
 private val levelColorMap = mapOf(
 
@@ -19,3 +20,6 @@ class LevelColorizer {
     return levelColorMap[logLine.level]
   }
 }
+
+
+inline fun <reified T> whatever(a: Any): T? = if(a is T) a else null

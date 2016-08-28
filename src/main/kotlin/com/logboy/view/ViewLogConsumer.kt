@@ -1,6 +1,6 @@
 package com.logboy.view
 
-import com.logboy.file.log.domain.log.LogLine
+import com.logboy.domain.LogLine
 import com.logboy.psi.IntellijLocalProjectContext
 
 interface ViewLogConsumer {

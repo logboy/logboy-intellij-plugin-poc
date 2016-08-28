@@ -1,4 +1,4 @@
-package com.logboy.file.log.domain.log
+package com.logboy.domain
 
 import java.time.LocalDateTime
 
@@ -15,5 +15,5 @@ data class LogLine(
     val content: String,
     val timestamp: LocalDateTime?,
     val level: Level?,
-    val location: CodeLocation
+    val location: PreciseCodeLineLocation
 )

@@ -1,9 +1,9 @@
 import io.kotlintest.specs.StringSpec
-import com.logboy.file.log.domain.log.CodeClass
-import com.logboy.file.log.domain.log.CodeLocation
-import com.logboy.file.log.domain.log.Level
-import com.logboy.file.log.domain.log.PreciseLineLocation
-import com.logboy.file.log.parser.JavaLog4JClassicLineParser
+import com.logboy.domain.ClassLocation
+import com.logboy.domain.PreciseCodeLineLocation
+import com.logboy.domain.Level
+import com.logboy.domain.CodeLineLocation
+import com.logboy.parser.java.JavaLog4JClassicLineParser
 import java.time.LocalDateTime
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -20,17 +20,19 @@ class SimplePatternLineParserSpec : StringSpec() {
 
 
           row("2014-07-02 20:52:39,134 [main] DEBUG ClassName - This is debug message2",
+
               Level.DEBUG,
               LocalDateTime.of(2014, 7, 2, 20, 52, 39),
               "This is debug message2",
-              CodeLocation(null, CodeClass("ClassName"), null)),
+              PreciseCodeLineLocation(null, ClassLocation("ClassName"), null)),
 
 
           row("2014-07-02 20:52:45,134 [main thread whatever]  ERROR   com.withPackage.ClassName:154 - This is debug message2       some spaces",
+
               Level.ERROR,
               LocalDateTime.of(2014, 7, 2, 20, 52, 45),
               "This is debug message2       some spaces",
-              CodeLocation(null, CodeClass("ClassName", "com.withPackage"), PreciseLineLocation(line = 154))
+              PreciseCodeLineLocation(null, ClassLocation("ClassName", "com.withPackage"), CodeLineLocation(line = 154))
           )
 
 

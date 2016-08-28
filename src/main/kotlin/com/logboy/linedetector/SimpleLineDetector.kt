@@ -1,4 +1,6 @@
-package com.logboy.file.log.datasources
+package com.logboy.linedetector
+
+import com.logboy.linedetector.LineDetector
 
 class SimpleLineDetector: LineDetector {
   override fun detect(rawData: ByteArray): List<String> {

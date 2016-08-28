@@ -1,9 +1,9 @@
 import io.kotlintest.specs.StringSpec
-import logboy.file.log.domain.log.CodeClass
-import logboy.file.log.domain.log.CodeLocation
-import logboy.file.log.domain.log.Level
-import logboy.file.log.domain.log.PreciseLineLocation
-import logboy.file.log.parser.JavaLog4JClassicLineParser
+import com.logboy.file.log.domain.log.CodeClass
+import com.logboy.file.log.domain.log.CodeLocation
+import com.logboy.file.log.domain.log.Level
+import com.logboy.file.log.domain.log.PreciseLineLocation
+import com.logboy.file.log.parser.JavaLog4JClassicLineParser
 import java.time.LocalDateTime
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
